@@ -42,8 +42,13 @@ Commit 5 - Added additional fields to be displayed in component -
         Further fields could be added via adding them to both the HTMl and SOQL query.
         A future enhancement to this functionality would be enabling the configuration of which fields are displayed within the component in the edit record page. This could be done by using another '@api' decorated variable to the Javascript, similar to how it was mentioend earlier. Another benefit of doing this is that it would remove duplication between the Apex class & HTML.
 
-Commit 6 - Added backed functionality to handle if the email field is blank & refactored the backend
+Commit 6 - Added backed functionality to handle if the email field is blank & refactored the backend -
     Added a boolean variable 'blankEmail' to the wrapper class, this is set when the findUserFromEmail function is called. In future work, this variable will be used to add conditional visibilty to the HTML class, using if:true functionality. If true a message would be displayed to the user, informing them that the Email field is empty, so a User cannot be found.
     I then chose to partially refactor the backend to increase the readability of my code and reduce some feature envy that had began to appear in the UserRecordFromEmail class.
     Regarding design choices -
         I chose to add this functionality to the backend rather than the frontend as it allowed me to prevent SOQL queries running without a need. I'm aware this could have also been done by refactoring the method in the class further so that a different method would be called in the Javascript if the Email field was blank, however due to the time constraint I opted to not do this. 
+
+Future Updates - Here I'll describe updates I'll be making to the codebase in the future -
+    Added front end functionality to display to the user if the Email field on the Contact record is blank, this change is described in further detail in the description of Commit 6.
+    Added functionality for if more than one User exists with the same email. To make my code more robust I've added a 'LIMIT 1' to the SOQL query to ensure that the component still functions as intended until this update is made. To make this update I would convert the UserWrapper in the UserRecordFromEmail class to a list. This would allow me to then run a SOQL query on multiple User records, which could then be put into a Map variable. Each record in this Map could then be ran through a for loop to add their relevant data to the User Wrapper List. Each of these User details could then be displayed in the HTML by introducing a for:each loop which would generate a display for each User.
+    Add configurability within the edit record page. This has been described in Commit 3. The goal of doing this would be to increase the reusability & flexibility of the component, which in turn would decrease the need to duplicate & hard code multiple variations of this component.
