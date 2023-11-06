@@ -41,3 +41,9 @@ Commit 5 - Added additional fields to be displayed in component -
         I added Username as this is a field which is not displayed in the Standard Contact record page.
         Further fields could be added via adding them to both the HTMl and SOQL query.
         A future enhancement to this functionality would be enabling the configuration of which fields are displayed within the component in the edit record page. This could be done by using another '@api' decorated variable to the Javascript, similar to how it was mentioend earlier. Another benefit of doing this is that it would remove duplication between the Apex class & HTML.
+
+Commit 6 - Added backed functionality to handle if the email field is blank & refactored the backend
+    Added a boolean variable 'blankEmail' to the wrapper class, this is set when the findUserFromEmail function is called. In future work, this variable will be used to add conditional visibilty to the HTML class, using if:true functionality. If true a message would be displayed to the user, informing them that the Email field is empty, so a User cannot be found.
+    I then chose to partially refactor the backend to increase the readability of my code and reduce some feature envy that had began to appear in the UserRecordFromEmail class.
+    Regarding design choices -
+        I chose to add this functionality to the backend rather than the frontend as it allowed me to prevent SOQL queries running without a need. I'm aware this could have also been done by refactoring the method in the class further so that a different method would be called in the Javascript if the Email field was blank, however due to the time constraint I opted to not do this. 
