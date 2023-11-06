@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="User Details">
+        <template if:true={userWrapper}>
+        <div class="slds-m-around_medium">
+            <p>Name: {userWrapper.user.FirstName}</p>
+        </div>
+    </template>
+    <template if:false={userWrapper}>
+        <div class="slds-m-around_medium">
+            <p>User not found! A User may not exist with an email of {emailValue}. If this is not the case then please contact your administrator.</p>
+        </div>
+    </template>
+    </lightning-card>
+</template>
