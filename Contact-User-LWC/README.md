@@ -29,7 +29,15 @@ Commit 3 - Created front end/LWC -
         Currently the LWC will only function as intended when used on record pages with a field named 'Email'. In the future I would opt to enable an administrator to input the Name of whichever field contains the Email string on the record page edit screen. This would be possible by adding a '@api' decorated variable to the Javascript file & adding a target config and property details to the meta.xml file. This variable could then be used in place of the occurences of 'Email' in the Javascript file.
             To prevent this LWC from being used where it would not be functional e.g. on a screen Flow the only target on the meta.xml file is 'lightning__RecordPage'.
         Upon testing I found that I needed to ensure that the methods and variables within the Apex classes that were made prior are Aura Enabled. So this update was also made as part of this commit.
+
 Commit 4 - Added component visibility -
     Ensured that only Users with the Profile of System Administrator could view the component by adding component visibility to the Contact record page. 
     Regarding design choices -
         If there were multiple aspects of the page that should only be visible to Sys admins then I could've created a new page layout & assign it to Sys admins only. But since there isn't I've opted not to, to avoid unnecessary complexity. 
+        
+Commit 5 - Added additional fields to be displayed in component -
+    Added additional fields to the HTML & the SOQL query within the UserRecordFromEmails class.
+    Regarding design choices -
+        I added Username as this is a field which is not displayed in the Standard Contact record page.
+        Further fields could be added via adding them to both the HTMl and SOQL query.
+        A future enhancement to this functionality would be enabling the configuration of which fields are displayed within the component in the edit record page. This could be done by using another '@api' decorated variable to the Javascript, similar to how it was mentioend earlier. Another benefit of doing this is that it would remove duplication between the Apex class & HTML.

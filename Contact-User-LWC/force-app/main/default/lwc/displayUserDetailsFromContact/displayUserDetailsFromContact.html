@@ -2,7 +2,8 @@
     <lightning-card title="User Details">
         <template if:true={userWrapper}>
         <div class="slds-m-around_medium">
-            <p>Name: {userWrapper.user.FirstName}</p>
+            <p>Name: {userWrapper.user.FirstName} {userWrapper.user.LastName}</p>
+            <p>Username: {userWrapper.user.Username}</p>
         </div>
     </template>
     <template if:false={userWrapper}>
