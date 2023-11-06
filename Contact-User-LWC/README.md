@@ -20,7 +20,7 @@ Commit 2 - Created UserRecordFromEmail class & associated test class -
 
 Commit 3 - Created front end/LWC -
     The focal point of this commit is creating a functional LWC that satisfies the minimum requirements. To do this I also had to make some edits to the Apex classes, which are detailed below.
-    Regarding design choices
+    Regarding design choices -
         Opted to add the if:false for the userWrapper being passed into the HTML to prevent any errors from being produced while the wire methods were retrieving the relevant data. This solution functions currently but once complexity of the solution grows I'll likely to opt to change the parameter of the if:false to a boolean variable stored within the userWrapper. This boolean variable would be assigned based on the results of the SOQL query within the UserRecordFromEmailClass.
         Used the {error, data} format to ensure any errors are recorded to aid in development. In the future the error path will be developed further so that the system is able to handle any errors appropriately.
         No delay was required for the second @wire method as this will fire after the first.
@@ -29,3 +29,7 @@ Commit 3 - Created front end/LWC -
         Currently the LWC will only function as intended when used on record pages with a field named 'Email'. In the future I would opt to enable an administrator to input the Name of whichever field contains the Email string on the record page edit screen. This would be possible by adding a '@api' decorated variable to the Javascript file & adding a target config and property details to the meta.xml file. This variable could then be used in place of the occurences of 'Email' in the Javascript file.
             To prevent this LWC from being used where it would not be functional e.g. on a screen Flow the only target on the meta.xml file is 'lightning__RecordPage'.
         Upon testing I found that I needed to ensure that the methods and variables within the Apex classes that were made prior are Aura Enabled. So this update was also made as part of this commit.
+Commit 4 - Added component visibility -
+    Ensured that only Users with the Profile of System Administrator could view the component by adding component visibility to the Contact record page. 
+    Regarding design choices -
+        If there were multiple aspects of the page that should only be visible to Sys admins then I could've created a new page layout & assign it to Sys admins only. But since there isn't I've opted not to, to avoid unnecessary complexity. 
